@@ -1,0 +1,16 @@
+{{> nav}}
+<form method="post">
+    <label for="markField">Mark</label>
+    <input id="markField" name="markField" type="text" value="{{mod.mark}}">
+
+    <label for="typeField">Type</label>
+    <select id="typeField" name="typeField">
+        <option value="sedan" {{#if isSedan }} selected {{/if}}>Sedan</option>
+        <option value="coupe" {{#if isCoupe }} selected {{/if}}>Coupe</option>
+        <option value="universal" {{#if isUniversal }} selected {{/if}}>Universal</option>
+    </select>
+
+    <label for="priceField">Price</label>
+    <input id="priceField" name="priceField" type="number" min="5" max="120" value="{{mod.priceForHour}}">
+    <button type="submit">Добавить</button>
+</form>

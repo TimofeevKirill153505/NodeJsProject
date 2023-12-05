@@ -1,0 +1,34 @@
+{{> nav}}
+<h2>Каталог</h2>
+<table>
+    <tr>
+        <td>mark</td>
+        <td>type</td>
+        <td>price for hour</td>
+    </tr>
+    {{#each cars}}
+    <tr>
+        <td>{{this.mark}}</td>
+        <td>{{this.type}}</td>
+        <td>{{this.priceForHour}}</td>
+        <td><a href="/catalog/update/{{this._id}}">редактировать</a></td>
+        <td>
+            <a href="/catalog/delete/{{this._id}}">удалить</a>
+        </td>
+    </tr>
+    {{/each}}
+</table>
+<form method="post">
+    <label for="markField">Mark</label>
+    <input id="markField" name="markField" type="text">
+
+    <label for="typeField">Type</label>
+    <select id="typeField" name="typeField">
+        <option value="sedan">Sedan</option>
+        <option value="coupe">Coupe</option>
+        <option value="universal">Universal</option>
+    </select>
+    <label for="priceField">Price</label>
+    <input id="priceField" name="priceField" type="number" min="5" max="120">
+    <button type="submit">Добавить</button>
+</form>
