@@ -5,7 +5,7 @@ async function get(req, resp) {
     let carModels = await global.CarModel.find({});
 
     //console.log(carModels)
-    return resp.render("CatalogViews/catalog.hbs", { cars: carModels });
+    return resp.json(carModels);
 }
 
 async function _delete(req, resp) {
@@ -14,7 +14,6 @@ async function _delete(req, resp) {
     //finded = await global.CarModel.findById(id);
     //console.log(finded);
     await global.CarModel.findByIdAndDelete(id)
-    return resp.redirect("/catalog");
 }
 
 async function post(req, resp) {
@@ -27,7 +26,7 @@ async function post(req, resp) {
     });
     console.log(newCar);
     newCar.save();
-    return resp.redirect("/catalog");
+
 }
 
 async function updateGet(req, resp) {

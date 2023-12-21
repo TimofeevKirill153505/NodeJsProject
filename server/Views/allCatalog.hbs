@@ -1,0 +1,15 @@
+{{>nav}}
+<table>
+    <tr>
+        <td>mark</td>
+        <td>type</td>
+        <td>price for hour</td>
+    </tr>
+    {{#each cars}}
+    <tr>
+        <td>{{this.mark}}</td>
+        <td>{{this.type}}</td>
+        <td>{{this.priceForHour}}</td>
+    </tr>
+    {{/each}}
+</table>

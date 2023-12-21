@@ -1,0 +1,9 @@
+{{> nav}}
+{{#each reviewsObj}}
+<section>
+    <p>{{this.username}}</p>
+    <p>{{this.rate}}/5</p>
+    <p>{{this.text}}</p>
+    <hr />
+</section>
+{{/each}}
