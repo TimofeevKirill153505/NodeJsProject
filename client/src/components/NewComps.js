@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Context } from "../index";
 
 function NewsItem(props) {
@@ -7,7 +7,7 @@ function NewsItem(props) {
             <p>{props.news.authorName}</p>
             <p>{props.news.newsName}</p>
             <p>{props.news.text}</p>
-            <a href={"/news/" + props.news.id}> Читать</a>
+            <a href={"/news/" + props.news._id}> Читать</a>
             <hr />
         </div>
     )
@@ -25,8 +25,26 @@ function News(props) {
 function NewsList(props) {
 
     const { newsStore } = useContext(Context);
+    let [data, setData] = useState(null);
+
+    useEffect(() => {
+        async function f() {
+            let res = await newsStore.getNews();
+            console.log(res);
+            setData(res);
+        };
+
+        f();
+    }, [newsStore])
+
+    if (data === null) {
+        return (
+            <p>Loading...</p>
+        )
+    }
+
     return (
-        newsStore.newsStore.map(news => {
+        data.map(news => {
             return (
                 <NewsItem news={news}></NewsItem>
             )

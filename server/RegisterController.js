@@ -4,11 +4,11 @@ async function get(req, resp) {
 
 async function post(req, resp) {
     let obj = { login: req.body.login, password: req.body.password }
-    console.log(obj)
-    console.log(await global.UserModel.find({ login: obj.login }))
+    //console.log(obj)
+    //console.log(await global.UserModel.find({ login: obj.login }))
     if ((await global.UserModel.find({ login: obj.login })).length != 0) {
         console.log("найден юзер с таким логином")
-        return resp.redirect("/register");
+        return resp.status(406);
     }
     console.log("cсоздается юзер")
     let usr = new global.UserModel({
@@ -18,7 +18,7 @@ async function post(req, resp) {
     });
 
     usr.save();
-    return resp.redirect("/login");
+    return resp.status(200);
 }
 
 exports.get = get;

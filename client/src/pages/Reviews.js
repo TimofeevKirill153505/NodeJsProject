@@ -1,4 +1,4 @@
-import { Component, useContext } from "react";
+import { Component, useContext, useEffect, useState } from "react";
 import { Context } from "../index";
 
 class Review extends Component {
@@ -16,13 +16,29 @@ class Review extends Component {
 }
 
 function Reviews() {
-    let cont = useContext(Context);
+    const { reviewStore } = useContext(Context);
+    let [data, setData] = useState(null);
+    useEffect(() => {
+        async function f() {
+            let res = await reviewStore.getReviews();
+            console.log(res);
+            setData(res);
+        };
+
+        f();
+    }, [reviewStore])
+
+    if (data === null) {
+        return (
+            <p>Loading...</p>
+        )
+    }
 
     return (
         <div>
             {
-                cont.reviewStore.reviews.map((review) => {
-                    return <Review review={review} username={cont.userStore.getUserNameById(review.user)}></Review>;
+                data.map((review) => {
+                    return <Review review={review} username={review.username}></Review>;
                 })
             }
         </div>

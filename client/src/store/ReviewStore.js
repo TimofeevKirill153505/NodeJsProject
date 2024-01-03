@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export default class ReviewStore {
     _reviews;
     // const carScheme = new Schema({
@@ -11,7 +13,9 @@ export default class ReviewStore {
         { user: 3, rate: 5, text: "iwutuwryiuigh" }]
     }
 
-    get reviews() {
-        return this._reviews;
+    async getReviews() {
+        let res = await axios.get("http://localhost:3001/reviews")
+        console.log(res.data)
+        return res.data;
     }
 }

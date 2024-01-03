@@ -3,8 +3,8 @@ import { Routes, Route, redirect } from 'react-router-dom'
 import Main from "../pages/main";
 import catalog from "../pages/catalog";
 import { NewsList, NewsPage } from "../pages/newslist";
-import { AdminPanel, AdminDelete, AdminUpdatePage } from "../pages/Admin"
-import { Login, Logout, Register } from "../pages/Auth";
+import { AdminPanel, AdminDelete, AdminUpdatePage, AdminCreatePage } from "../pages/Admin"
+import { Login, Logout, Register, Empty } from "../pages/Auth";
 import { Reviews } from "../pages/Reviews"
 
 const AppRouter = () => {
@@ -21,6 +21,7 @@ const AppRouter = () => {
             <Route path="/logout" Component={Logout}></Route>
             <Route path="/register" Component={Register}></Route>
             <Route path="/reviews" Component={Reviews}></Route>
+            <Route path="/admin/create" Component={AdminCreatePage}></Route>
         </Routes>
     );
 };

@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export default class NewsStore {
     // authorName: String,
     // newsName: String,
@@ -10,11 +12,15 @@ export default class NewsStore {
         ]
     }
 
-    get news() {
-        return this._news;
+    async getNews() {
+        let res = await axios.get("http://localhost:3001/news")
+        console.log(res.data)
+        return res.data;
     }
 
-    getNew(id) {
-        return this.news[id];
+    async getNew(id) {
+        let res = await axios.get(`http://localhost:3001/news/${id}`)
+        console.log(res.data)
+        return res.data;
     }
 }

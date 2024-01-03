@@ -1,0 +1,46 @@
+header.sticky-bar {
+    position: sticky;
+    top: 1em;
+    z-index: 19;
+}
+
+* {
+    font-family: Helvetica, sans-serif;
+}
+
+.nav {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 12em repeat(auto-fill, 6em);
+    grid-auto-rows: 3em;
+    min-height: 3em;
+    top: 1em;
+    width: 99%;
+    z-index: 20;
+
+}
+
+.nav a {
+    text-decoration: none;
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+
+.nav a:visited {
+    color: white;
+}
+
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.catalog-grid div {
+    border: 1px black solid;
+    padding: 5px;
+
+}
